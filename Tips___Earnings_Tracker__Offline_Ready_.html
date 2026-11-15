@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips & Earnings Tracker</title>
+    <!-- Embedded Full Tailwind CSS Framework Build (No CDN Required) -->
+    <style>
+        /*! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
+        *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e2e8f0}
+        html{-webkit-text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}
+        body{margin:0;line-height:inherit;font-family:'Inter', system-ui, sans-serif;}
+        .h-full{height:100%}.min-h-full{min-height:100%}.w-full{width:100%}.max-w-7xl{max-width:80rem}.max-w-md{max-width:28rem}.max-w-xs{max-width:20rem}.max-w-xs{max-width:20rem}
+        .flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}
+        .flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}
+        .gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}
+        .grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}
+        @media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.sm\:inline{display:inline}}
+        @media (min-width: 768px){.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}.md\:self-auto{align-self:auto}}
+        @media (min-width: 1024px){.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}}
+        
+        /* Background & Colors */
+        .bg-slate-950{background-color:#020617}.bg-slate-900{background-color:#0f172a}.bg-slate-800{background-color:#1e293b}.bg-slate-700{background-color:#334155}
+        .bg-slate-900\/80{background-color:rgba(15, 23, 42, 0.8)}.bg-slate-900\/50{background-color:rgba(15, 23, 42, 0.5)}.bg-slate-950\/80{background-color:rgba(2, 6, 23, 0.8)}.bg-slate-950\/60{background-color:rgba(2, 6, 23, 0.6)}
+        .bg-emerald-600{background-color:#059669}.bg-emerald-500{background-color:#10b981}.bg-emerald-500\/10{background-color:rgba(16, 185, 129, 0.1)}.bg-emerald-950\/50{background-color:rgba(6, 78, 59, 0.5)}
+        .bg-blue-950\/50{background-color:rgba(30, 58, 138, 0.5)}.bg-purple-950\/50{background-color:rgba(88, 28, 135, 0.5)}.bg-rose-950\/40{background-color:rgba(76, 5, 25, 0.4)}.bg-rose-600{background-color:#e11d48}.bg-rose-500\/10{background-color:rgba(244, 63, 94, 0.1)}
+        .hover\:bg-emerald-500:hover{background-color:#10b981}.hover\:bg-slate-800:hover{background-color:#1e293b}.hover\:bg-slate-700:hover{background-color:#334155}.hover\:bg-rose-500:hover{background-color:#f43f5e}
+        
+        /* Borders & Radii */
+        .border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}
+        .border-slate-800{border-color:#1e293b}.border-slate-700{border-color:#334155}.border-emerald-500{border-color:#10b981}.border-emerald-500\/20{border-color:rgba(16, 185, 129, 0.2)}.border-rose-800\/50{border-color:rgba(159, 18, 57, 0.5)}
+        .rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}
+        
+        /* Typography & Layout Spacing */
+        .text-slate-100{color:#f8fafc}.text-slate-200{color:#e2e8f0}.text-slate-300{color:#cbd5e1}.text-slate-400{color:#94a3b8}.text-slate-500{color:#64748b}.text-white{color:#ffffff}
+        .text-emerald-400{color:#34d399}.text-amber-400{color:#fbbf24}.text-rose-400{color:#fb7185}.text-blue-400{color:#60a5fa}.text-purple-400{color:#c084fc}
+        .text-xs{font-size:0.75rem;line-height:1rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}
+        .font-normal{font-weight:400}.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-bold{font-weight:700}.font-extrabold{font-weight:800}
+        .uppercase{text-transform:uppercase}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.text-left{text-align:left}.text-right{text-align:right}.text-center{text-align:center}
+        
+        /* Padding & Margin */
+        .p-1\.5{padding:0.375rem}.p-2{padding:0.5rem}.p-2\.5{padding:0.625rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.py-12{padding-top:3rem;padding-bottom:3rem}
+        .pl-8{padding-left:2rem}.pl-9{padding-left:2.25rem}.pr-3{padding-right:0.75rem}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mt-2{margin-top:0.5rem}.mt-auto{margin-top:auto}.mx-auto{margin-left:auto;margin-right:auto}
+        .space-y-2 > :not([hidden]) ~ :not([hidden]){margin-top:0.5rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){margin-top:0.75rem}.space-y-4 > :not([hidden]) ~ :not([hidden]){margin-top:1rem}.space-y-5 > :not([hidden]) ~ :not([hidden]){margin-top:1.25rem}.space-y-8 > :not([hidden]) ~ :not([hidden]){margin-top:2rem}
+
+        /* Positioning & Special */
+        .relative{position:relative}.absolute{position:absolute}.fixed{position:fixed}.sticky{position:sticky}.inset-0{top:0;right:0;bottom:0;left:0}.top-0{top:0}.top-1\/2{top:50%}.left-3{left:0.75rem}.left-3\.5{left:0.875rem}.-translate-y-1\/2{transform:translateY(-50%)}.z-30{z-index:30}.z-50{z-index:50}
+        .w-3\.5{width:0.875rem}.h-3\.5{height:0.875rem}.w-4{width:1rem}.h-4{height:1rem}.w-5{width:1.25rem}.h-5{height:1.25rem}.w-6{width:1.5rem}.h-6{height:1.5rem}.w-10{width:2.5rem}.h-10{height:2.5rem}.w-12{width:3rem}.h-12{height:3rem}.h-16{height:4rem}.h-36{height:9rem}
+        .shadow-xl{box-shadow:0 20px 25px -5px rgba(0,0,0,0.5)}.backdrop-blur{backdrop-filter:blur(8px)}
+        .outline-none{outline:none}.appearance-none{-webkit-appearance:none;appearance:none}.cursor-pointer{cursor:pointer}
+        .transition{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}
+
+        /* Inline SVG Icon Helper */
+        .icon-svg { display: inline-block; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
+    </style>
+</head>
+<body class="min-h-full flex flex-col bg-slate-950 text-slate-100 antialiased">
+
+    <!-- Top Navigation Header -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center shadow-lg">
+                    <svg class="icon-svg w-5 h-5 text-white" viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                        TipTrack Pro
+                        <span class="text-xs font-normal px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Offline Ready</span>
+                    </h1>
+                    <p class="text-xs text-slate-400">Daily Tip & Earnings Management</p>
+                </div>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="flex items-center gap-2">
+                <button id="demoDataBtn" onclick="loadDemoData()" class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center gap-1.5">
+                    <svg class="icon-svg w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.28 1.28L3 12l5.8 1.9a2 2 0 0 1 1.28 1.28L12 21l1.9-5.8a2 2 0 0 1 1.28-1.28L21 12l-5.8-1.9a2 2 0 0 1-1.28-1.28Z"/></svg>
+                    <span class="hidden sm:inline">Load</span> Demo Data
+                </button>
+                <button onclick="exportToCSV()" class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center gap-1.5">
+                    <svg class="icon-svg w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    <span class="hidden sm:inline">Export</span> CSV
+                </button>
+                <button onclick="openClearModal()" class="px-3 py-1.5 text-xs font-medium rounded-lg bg-rose-950/40 hover:bg-rose-900/50 text-rose-400 border border-rose-800/50 transition flex items-center gap-1.5">
+                    <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                    Clear Data
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Input Form Card -->
+            <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                <h2 class="text-base font-semibold text-white mb-4 flex items-center gap-2">
+                    <svg class="icon-svg w-5 h-5 text-emerald-400" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
+                    Log New Tip Entry
+                </h2>
+
+                <form id="tipForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Date</label>
+                        <div class="relative">
+                            <svg class="icon-svg w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                            <input type="date" id="inputDate" required class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-sm text-white outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Tip Amount ($)</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-semibold">$</span>
+                            <input type="number" id="inputAmount" step="0.01" min="0" placeholder="0.00" required class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-8 pr-3 py-2.5 text-lg font-bold text-emerald-400 outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-1">Payment Method</label>
+                            <div class="relative">
+                                <svg class="icon-svg w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                                <select id="inputCategory" class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-sm text-white outline-none">
+                                    <option value="Cash">Cash</option>
+                                    <option value="Card">Card</option>
+                                    <option value="App / Digital">App / Digital</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-1">Shift / Time</label>
+                            <div class="relative">
+                                <svg class="icon-svg w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <select id="inputShift" class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-sm text-white outline-none">
+                                    <option value="Evening">Evening</option>
+                                    <option value="Day">Day</option>
+                                    <option value="Night">Night</option>
+                                    <option value="Double">Double Shift</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Notes / Details (Optional)</label>
+                        <input type="text" id="inputNotes" placeholder="e.g. Dinner shift, table 12 extra tip" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-white outline-none">
+                    </div>
+
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 px-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 cursor-pointer">
+                        <svg class="icon-svg w-5 h-5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Save Tip Entry
+                    </button>
+                </form>
+            </div>
+
+            <!-- Stats & Quick Summary -->
+            <div class="lg:col-span-7 space-y-4 flex flex-col justify-between">
+                
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap gap-2 items-center justify-between">
+                    <div class="text-xs font-medium text-slate-400 flex items-center gap-1.5">
+                        <svg class="icon-svg w-4 h-4 text-emerald-400" viewBox="0 0 24 24"><line x1="4" x2="20" y1="21" y2="21"/><line x1="4" x2="20" y1="14" y2="14"/><line x1="4" x2="20" y1="7" y2="7"/></svg>
+                        <span>Period Presets:</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <button onclick="setPreset('today')" class="preset-btn text-xs px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-300">Today</button>
+                        <button onclick="setPreset('yesterday')" class="preset-btn text-xs px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-300">Yesterday</button>
+                        <button onclick="setPreset('week')" class="preset-btn text-xs px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-300">This Week</button>
+                        <button onclick="setPreset('month')" class="preset-btn text-xs px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-300">This Month</button>
+                        <button onclick="setPreset('all')" class="preset-btn active text-xs px-3 py-1.5 rounded-lg border border-emerald-500 bg-emerald-500/10 text-emerald-400 font-medium">All Time</button>
+                    </div>
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
+                        <span class="text-xs font-medium text-slate-400">Total Tips</span>
+                        <p id="statTotal" class="text-2xl font-extrabold text-emerald-400 mt-2">$0.00</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
+                        <span class="text-xs font-medium text-slate-400">Daily Average</span>
+                        <p id="statAverage" class="text-2xl font-extrabold text-white mt-2">$0.00</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
+                        <span class="text-xs font-medium text-slate-400">Days Worked</span>
+                        <p id="statDays" class="text-2xl font-extrabold text-white mt-2">0</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
+                        <span class="text-xs font-medium text-slate-400">Highest Day</span>
+                        <p id="statHighest" class="text-2xl font-extrabold text-amber-400 mt-2">$0.00</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Log List / Table Section -->
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+            <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+                <h3 class="font-semibold text-white flex items-center gap-2">
+                    Tip History Log
+                    <span id="logCountBadge" class="text-xs bg-slate-800 text-slate-300 font-medium px-2.5 py-0.5 rounded-full border border-slate-700">0 records</span>
+                </h3>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-300">
+                    <thead class="bg-slate-950/60 text-xs font-semibold uppercase text-slate-400 border-b border-slate-800">
+                        <tr>
+                            <th class="py-3.5 px-6">Date</th>
+                            <th class="py-3.5 px-4">Tip Amount</th>
+                            <th class="py-3.5 px-4">Payment</th>
+                            <th class="py-3.5 px-4">Shift</th>
+                            <th class="py-3.5 px-6">Notes</th>
+                            <th class="py-3.5 px-6 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logsTableBody" class="divide-y divide-slate-800">
+                        <!-- Dynamic Rows Inject Here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="emptyState" class="py-12 text-center space-y-3">
+                <p class="text-sm text-slate-400 font-medium">No tip entries stored yet. Log your first tip above!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Application Logic Script -->
+    <script>
+        let tipsData = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('inputDate').value = getTodayISO();
+            loadFromLocalStorage();
+            applyFilters();
+        });
+
+        function getTodayISO() {
+            const d = new Date();
+            return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        }
+
+        function loadFromLocalStorage() {
+            try {
+                const stored = localStorage.getItem('tiptrack_data');
+                tipsData = stored ? JSON.parse(stored) : [];
+            } catch (e) {
+                tipsData = [];
+            }
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('tiptrack_data', JSON.stringify(tipsData));
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const dateVal = document.getElementById('inputDate').value;
+            const amountVal = parseFloat(document.getElementById('inputAmount').value);
+            const categoryVal = document.getElementById('inputCategory').value;
+            const shiftVal = document.getElementById('inputShift').value;
+            const notesVal = document.getElementById('inputNotes').value.trim();
+
+            if (!dateVal || isNaN(amountVal)) return;
+
+            tipsData.push({
+                id: 'id_' + Date.now(),
+                date: dateVal,
+                amount: amountVal,
+                category: categoryVal,
+                shift: shiftVal,
+                notes: notesVal
+            });
+
+            saveToLocalStorage();
+            document.getElementById('inputAmount').value = '';
+            document.getElementById('inputNotes').value = '';
+            applyFilters();
+        }
+
+        function deleteEntry(id) {
+            tipsData = tipsData.filter(item => item.id !== id);
+            saveToLocalStorage();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const tbody = document.getElementById('logsTableBody');
+            const emptyState = document.getElementById('emptyState');
+            const badge = document.getElementById('logCountBadge');
+
+            tbody.innerHTML = '';
+            badge.textContent = `${tipsData.length} records`;
+
+            if (tipsData.length === 0) {
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+            }
+
+            // Sort newest first
+            const sorted = [...tipsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            sorted.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="py-3.5 px-6 font-medium text-white">${item.date}</td>
+                    <td class="py-3.5 px-4 font-bold text-emerald-400">$${item.amount.toFixed(2)}</td>
+                    <td class="py-3.5 px-4"><span class="text-xs px-2.5 py-1 rounded-full border border-slate-700 bg-slate-800">${item.category}</span></td>
+                    <td class="py-3.5 px-4 text-xs text-slate-400">${item.shift}</td>
+                    <td class="py-3.5 px-6 text-slate-300">${item.notes || '--'}</td>
+                    <td class="py-3.5 px-6 text-right">
+                        <button onclick="deleteEntry('${item.id}')" class="text-slate-500 hover:text-rose-400">刪除</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Update stats
+            const total = tipsData.reduce((sum, item) => sum + item.amount, 0);
+            const count = tipsData.length;
+            const avg = count > 0 ? (total / count) : 0;
+            const max = count > 0 ? Math.max(...tipsData.map(d => d.amount)) : 0;
+
+            document.getElementById('statTotal').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('statAverage').textContent = `$${avg.toFixed(2)}`;
+            document.getElementById('statDays').textContent = count;
+            document.getElementById('statHighest').textContent = `$${max.toFixed(2)}`;
+        }
+
+        function exportToCSV() {
+            if (tipsData.length === 0) return;
+            const headers = ["Date", "Amount", "Category", "Shift", "Notes"];
+            const rows = tipsData.map(i => [`"${i.date}"`, `"${i.amount.toFixed(2)}"`, `"${i.category}"`, `"${i.shift}"`, `"${i.notes || ''}"`].join(","));
+            const blob = new Blob([[headers.join(","), ...rows].join("\n")], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `tips_backup.csv`;
+            a.click();
+        }
+    </script>
+</body>
+</html>
